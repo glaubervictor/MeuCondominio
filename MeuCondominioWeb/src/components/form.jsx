@@ -50,6 +50,42 @@ const InputText = ({
 );
 
 /*
+ * Input Password
+ */
+const InputPassword = ({
+  name,
+  value,
+  label,
+  col,
+  tooltip,
+  required,
+  handleChange,
+  error
+}) => (
+  <div className={`col-md-${col}`}>
+    <div className={`form-group ${!!error && "is-invalid"}`}>
+      <label className="control-label">
+        {label}
+        <span style={{ color: "transparent" }}>.</span>
+        {required && <span className="text-danger"> * </span>}
+        {!!tooltip && (
+          <Tooltip title={tooltip}>
+            <Icon type="question-circle-o" style={{ color: tooltipColor }} />
+          </Tooltip>
+        )}
+      </label>
+      <Input.Password
+        name={name}
+        onChange={handleChange}
+        value={value}
+        style={{ width: "100%" }}
+      />
+      <small className="help-block">{!!error && <span>{error}</span>}</small>
+    </div>
+  </div>
+);
+
+/*
  * Input Number
  */
 const InputNumber = ({
@@ -172,4 +208,4 @@ const Select = ({
   </div>
 );
 
-export { InputText, InputNumber, DatePicker, Select };
+export { InputText, InputPassword, InputNumber, DatePicker, Select };

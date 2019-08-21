@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import * as Yup from "yup";
 
 //components
-import { InputText } from "../../components/form";
+import { InputText, InputPassword } from "../../components/form";
 import { Panel, Row, Column, Form, Br } from "../../components/bootstrap";
 import Messages from "../../helpers/messages";
 
@@ -43,7 +43,7 @@ class InnerForm extends Component {
               label="E-mail"
             />
             {/* senha */}
-            <InputText
+            <InputPassword
               name="senha"
               handleChange={handleChange}
               col={6}
