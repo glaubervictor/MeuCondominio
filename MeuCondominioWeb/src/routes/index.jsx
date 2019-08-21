@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
-//dashboard
-import DashboardIndex from "../pages/dashboard";
+//login
+import LoginIndex from "../pages/login";
 
 //apartamentos
 import ApartamentoIndex from "../pages/apartamento";
@@ -14,14 +14,42 @@ import MoradorIndex from "../pages/morador";
 import MoradorAdd from "../pages/morador/add";
 import MoradorEdit from "../pages/morador/edit";
 
+const PrivateRouter = ({ component: Component, authed, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      authed ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{ pathname: "/login", state: { from: props.location } }}
+        />
+      )
+    }
+  />
+);
+
 export default class Routes extends Component {
+  isAuthenticate = async () => {
+    if (await !!localStorage.getItem("meuCondominio:token")) {
+      debugger;
+      return true;
+    }
+    return false;
+  };
+
   render() {
     return (
       <Switch>
-        {/* Main Page */}
-        <Route exact path="/" component={DashboardIndex} />
+        {/* Login */}
+        <Route exact path="/login" component={LoginIndex} />
         {/* Apartamentos */}
-        <Route exact path="/apartamentos" component={ApartamentoIndex} />
+        <PrivateRouter
+          exact
+          authed={this.isAuthenticate()}
+          path="/apartamentos"
+          component={ApartamentoIndex}
+        />
         <Route path="/apartamentos/adicionar" component={ApartamentoAdd} />
         <Route path="/apartamentos/editar/:id" component={ApartamentoEdit} />
         {/* Moradores */}
