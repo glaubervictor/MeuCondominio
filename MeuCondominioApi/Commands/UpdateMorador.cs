@@ -9,12 +9,13 @@ namespace MeuCondominioApi.Commands
         public Guid Id { get; set; }
         public Guid ApartamentoId { get; }
         public string NomeCompleto { get; }
-        public DateTime DataNascimento { get; }
+        public string DataNascimento { get; }
         public string Telefone { get; }
         public string Cpf { get; }
         public string Email { get; }
 
-        public UpdateMorador(Guid id, Guid apartamentoId, string nomeCompleto, DateTime dataNascimento, string telefone, string cpf, string email)
+        public UpdateMorador(Guid id, Guid apartamentoId, string nomeCompleto, string dataNascimento,
+            string telefone, string cpf, string email)
         {
             Id = id;
             ApartamentoId = apartamentoId;

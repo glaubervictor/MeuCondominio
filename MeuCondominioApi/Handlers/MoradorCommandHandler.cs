@@ -32,7 +32,7 @@ namespace MeuCondominioApi.Handlers
             {
                 ApartamentoId = request.ApartamentoId,
                 Cpf = request.Cpf,
-                DataNascimento = request.DataNascimento,
+                DataNascimento = DateTime.Parse(request.DataNascimento),
                 Email = request.Email,
                 NomeCompleto = request.NomeCompleto,
                 Telefone = request.Telefone
@@ -51,7 +51,7 @@ namespace MeuCondominioApi.Handlers
                 Id = request.Id,
                 ApartamentoId = request.ApartamentoId,
                 Cpf = request.Cpf,
-                DataNascimento = request.DataNascimento,
+                DataNascimento = DateTime.Parse(request.DataNascimento),
                 Email = request.Email,
                 NomeCompleto = request.NomeCompleto,
                 Telefone = request.Telefone

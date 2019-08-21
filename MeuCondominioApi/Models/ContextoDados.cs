@@ -20,8 +20,18 @@ namespace MeuCondominioApi.Models
 
             //Resolvendo Bug MySQL campo Guid. //https://github.com/jasonsturges/mysql-dotnet-core
 
-            builder.Entity<Apartamento>(entity => entity.Property(m => m.Id).HasMaxLength(127));
-            builder.Entity<Morador>(entity => entity.Property(m => m.Id).HasMaxLength(127));
+            builder.Entity<Apartamento>(entity =>
+            {
+                entity.Property(m => m.Id).HasMaxLength(127);
+                entity.Ignore(m => m.QuantidadeMoradores);
+            });
+
+            builder.Entity<Morador>(entity =>
+            {
+                entity.Property(m => m.Id).HasMaxLength(127);
+                entity.Ignore(m => m.DataNascimentoFormatada);
+            });
+
             builder.Entity<Usuario>(entity =>
             {
                 entity.Property(m => m.Id).HasMaxLength(127);
@@ -47,8 +57,8 @@ namespace MeuCondominioApi.Models
 
             builder.Entity<Morador>()
                 .HasOne<Apartamento>()
-                .WithMany(c => c.Moradores)
-                .HasForeignKey(c => c.ApartamentoId);
+                .WithMany(m => m.Moradores)
+                .HasForeignKey(m => m.ApartamentoId);
 
             builder.Entity<Morador>().ToTable("Moradores");
             builder.Entity<Usuario>().ToTable("Usuarios");

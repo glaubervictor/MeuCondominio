@@ -48,10 +48,10 @@ namespace MeuCondominioApi.Controllers
             return Response(await _mediator.Send(command).ConfigureAwait(false));
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody] DeleteApartamento command)
+        [HttpDelete("{id}", Name = "Delete_Apartamento")]
+        public async Task<IActionResult> Delete(Guid id)
         {
-            return Response(await _mediator.Send(command).ConfigureAwait(false));
+            return Response(await _mediator.Send(new DeleteApartamento(id)).ConfigureAwait(false));
         }
     }
 }

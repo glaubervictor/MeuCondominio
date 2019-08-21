@@ -8,12 +8,13 @@ namespace MeuCondominioApi.Commands
     {
         public Guid ApartamentoId { get; }
         public string NomeCompleto { get; }
-        public DateTime DataNascimento { get; }
+        public string DataNascimento { get; }
         public string Telefone { get; }
         public string Cpf { get; }
         public string Email { get; }
 
-        public CreateMorador(Guid apartamentoId, string nomeCompleto, DateTime dataNascimento, string telefone, string cpf, string email)
+        public CreateMorador(Guid apartamentoId, string nomeCompleto, string dataNascimento, 
+            string telefone, string cpf, string email)
         {
             ApartamentoId = apartamentoId;
             NomeCompleto = nomeCompleto;

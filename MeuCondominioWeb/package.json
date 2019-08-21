@@ -1,0 +1,57 @@
+{
+  "name": "omnix-admin",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "animate.css": "^3.7.2",
+    "antd": "^3.19.3",
+    "apisauce": "^1.0.2",
+    "bootstrap": "^4.3.1",
+    "font-awesome": "^4.7.0",
+    "formik": "^1.5.7",
+    "history": "^4.9.0",
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.11",
+    "metismenu": "^3.0.4",
+    "moment": "^2.24.0",
+    "popper.js": "^1.15.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "redux": "^4.0.1",
+    "redux-multi": "^0.1.12",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0",
+    "vanilla-masker": "^1.2.0",
+    "yup": "^0.27.0"
+  },
+  "scripts": {
+    "start": "cp base.less node_modules/antd/lib/style/core && react-app-rewired start",
+    "build": "cp base.less node_modules/antd/lib/style/core && react-app-rewired build",
+    "test": "react-app-rewired test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.12.0",
+    "customize-cra": "^0.2.13",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "react-app-rewired": "^2.1.3"
+  }
+}
