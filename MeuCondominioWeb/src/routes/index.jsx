@@ -14,11 +14,11 @@ import MoradorIndex from "../pages/morador";
 import MoradorAdd from "../pages/morador/add";
 import MoradorEdit from "../pages/morador/edit";
 
-const PrivateRouter = ({ component: Component, authed, ...rest }) => (
+const PrivateRouter = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      authed ? (
+      !!localStorage.getItem("meuCondominio:token") ? (
         <Component {...props} />
       ) : (
         <Redirect
@@ -30,14 +30,6 @@ const PrivateRouter = ({ component: Component, authed, ...rest }) => (
 );
 
 export default class Routes extends Component {
-  isAuthenticate = async () => {
-    if (await !!localStorage.getItem("meuCondominio:token")) {
-      debugger;
-      return true;
-    }
-    return false;
-  };
-
   render() {
     return (
       <Switch>
@@ -46,16 +38,21 @@ export default class Routes extends Component {
         {/* Apartamentos */}
         <PrivateRouter
           exact
-          authed={this.isAuthenticate()}
           path="/apartamentos"
           component={ApartamentoIndex}
         />
-        <Route path="/apartamentos/adicionar" component={ApartamentoAdd} />
-        <Route path="/apartamentos/editar/:id" component={ApartamentoEdit} />
+        <PrivateRouter
+          path="/apartamentos/adicionar"
+          component={ApartamentoAdd}
+        />
+        <PrivateRouter
+          path="/apartamentos/editar/:id"
+          component={ApartamentoEdit}
+        />
         {/* Moradores */}
-        <Route exact path="/moradores" component={MoradorIndex} />
-        <Route path="/moradores/adicionar" component={MoradorAdd} />
-        <Route path="/moradores/editar/:id" component={MoradorEdit} />
+        <PrivateRouter exact path="/moradores" component={MoradorIndex} />
+        <PrivateRouter path="/moradores/adicionar" component={MoradorAdd} />
+        <PrivateRouter path="/moradores/editar/:id" component={MoradorEdit} />
       </Switch>
     );
   }

@@ -46,7 +46,7 @@ class TopHeader extends Component {
           </div>
           <ul className="nav navbar-top-links navbar-right">
             <li>
-              <a href={hrefLink}>
+              <a href={hrefLink} onClick={() => localStorage.clear()}>
                 <i className="fa fa-sign-out" /> Sair
               </a>
             </li>
