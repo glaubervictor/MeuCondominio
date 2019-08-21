@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Table, Tooltip, Popconfirm } from "antd";
 import { withRouter } from "react-router-dom";
 
+//components
+import FormPesquisa from "./formPesquisa";
+
 //redux
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -76,18 +79,21 @@ class GridMorador extends Component {
   render() {
     const { title } = this.props;
     return (
-      <div className="panel panel-primary">
-        <div className="panel-heading">{title}</div>
-        <div className="panel-body no-padding">
-          <Table
-            pagination={NaN}
-            loading={this.props.moradorReducer.loading}
-            rowKey="id"
-            dataSource={this.props.moradorReducer.records}
-            columns={this.moradorCollumns}
-          />
+      <>
+        <FormPesquisa />
+        <div className="panel panel-primary">
+          <div className="panel-heading">{title}</div>
+          <div className="panel-body no-padding">
+            <Table
+              pagination={NaN}
+              loading={this.props.moradorReducer.loading}
+              rowKey="id"
+              dataSource={this.props.moradorReducer.records}
+              columns={this.moradorCollumns}
+            />
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

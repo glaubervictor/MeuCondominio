@@ -30,11 +30,18 @@ namespace MeuCondominioApi.Controllers
             return Response(_moradorService.GetAll());
         }
 
+        [HttpGet("search")]
+        public IActionResult Get([FromQuery] string description)
+        {
+            return Response(_moradorService.GetByDescription(description));
+        }
+
         [HttpGet("{id}", Name = "Get_Morador")]
         public IActionResult Get(Guid id)
         {
             return Response(_moradorService.GetById(id));
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateMorador command)

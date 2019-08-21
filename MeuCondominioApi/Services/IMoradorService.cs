@@ -8,5 +8,6 @@ namespace MeuCondominioApi.Services
     {
         Morador GetById(Guid id);
         IEnumerable<Morador> GetAll();
+        IEnumerable<Morador> GetByDescription(string description);
     }
 }

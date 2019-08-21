@@ -31,12 +31,20 @@ namespace MeuCondominioApi.Services
         }
 
         
-        IEnumerable<Morador> IMoradorService.GetAll()
+        public IEnumerable<Morador> GetAll()
         {
             return _contexto.Moradores.OrderBy(c => c.NomeCompleto);
         }
 
-        Morador IMoradorService.GetById(Guid id)
+        public IEnumerable<Morador> GetByDescription(string description)
+        {
+            return _contexto.Moradores.Where(
+                m => m.Cpf == description 
+                || m.NomeCompleto.Contains(description) 
+                || m.Email == description);
+        }
+
+        public Morador GetById(Guid id)
         {
             return _contexto.Moradores.Find(id);
         }

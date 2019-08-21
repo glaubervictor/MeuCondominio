@@ -86,6 +86,24 @@ export const Creators = {
         dispatch(Creators.setLoading(false));
       });
   },
+  // Get all moradores by description
+  getByDescription: (description, setSubmitting) => dispatch => {
+    dispatch([Creators.setLoading(true), setSubmitting(true)]);
+    debugger;
+    api
+      .get(`/moradores/search?description=${description}`)
+      .then(response => {
+        const { content } = response.data;
+        dispatch([
+          Creators.setLoading(false),
+          setSubmitting(false),
+          { type: Types.GET_ALL, payload: content }
+        ]);
+      })
+      .catch(() => {
+        dispatch([Creators.setLoading(false), setSubmitting(false)]);
+      });
+  },
   // Add morador
   add: (values, resetForm, setErrors, setSubmitting) => dispatch => {
     dispatch([Creators.setLoading(true), setSubmitting(true)]);
