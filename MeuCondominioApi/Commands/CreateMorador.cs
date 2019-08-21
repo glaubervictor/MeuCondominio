@@ -1,0 +1,26 @@
+﻿using MediatR;
+using MeuCondominioApi.Core;
+using System;
+
+namespace MeuCondominioApi.Commands
+{
+    public class CreateMorador : IRequest<Response>
+    {
+        public Guid ApartamentoId { get; }
+        public string NomeCompleto { get; }
+        public DateTime DataNascimento { get; }
+        public string Telefone { get; }
+        public string Cpf { get; }
+        public string Email { get; }
+
+        public CreateMorador(Guid apartamentoId, string nomeCompleto, DateTime dataNascimento, string telefone, string cpf, string email)
+        {
+            ApartamentoId = apartamentoId;
+            NomeCompleto = nomeCompleto;
+            DataNascimento = dataNascimento;
+            Telefone = telefone;
+            Cpf = cpf;
+            Email = email;
+        }
+    }
+}
