@@ -37,8 +37,8 @@ export const Creators = {
     payload: loading
   }),
   // Auth
-  auth: values => dispatch => {
-    dispatch(Creators.setLoading(true));
+  auth: (values, setSubmitting) => dispatch => {
+    dispatch([Creators.setLoading(true), setSubmitting(true)]);
     api
       .post("/autenticacao", values)
       .then(response => {
@@ -48,6 +48,7 @@ export const Creators = {
 
         dispatch([
           Creators.setLoading(false),
+          setSubmitting(false),
           history.push("/apartamentos")
         ]);
       })
@@ -57,7 +58,7 @@ export const Creators = {
           description: "Usuário e/ou senha incorretos."
         });
 
-        dispatch(Creators.setLoading(false));
+        dispatch([Creators.setLoading(false), setSubmitting(false)]);
       });
   }
 };

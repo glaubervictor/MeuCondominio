@@ -84,8 +84,8 @@ const ApartamentoForm = withFormik({
       .required(Messages.REQUIRED),
     senha: Yup.string().required(Messages.REQUIRED)
   }),
-  handleSubmit(values, { props }) {
-    props.loginActions.auth(values);
+  handleSubmit(values, { props, setSubmitting }) {
+    props.loginActions.auth(values, setSubmitting);
   }
 })(InnerForm);
 

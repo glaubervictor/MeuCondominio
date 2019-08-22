@@ -32,8 +32,8 @@ class GridMorador extends Component {
         dataIndex: "email"
       },
       {
-        title: "Ação",
-        dataIndex: "acao",
+        title: "Editar",
+        dataIndex: "editar",
         render: (text, record) => {
           return (
             <div>
