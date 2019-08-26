@@ -1,19 +1,12 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using System;
-
-namespace MeuCondominioApi.Models
+﻿namespace MeuCondominioApi.Models
 {
     public abstract class Base<T> 
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        public Base()
-        {
-            Id = Guid.NewGuid();
-        }
+        public Base() { }
 
-        public Base(Guid id)
+        public Base(int id)
         {
             Id = id;
         }

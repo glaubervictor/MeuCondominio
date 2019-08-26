@@ -35,7 +35,7 @@ CREATE TABLE `__efmigrationshistory` (
 
 LOCK TABLES `__efmigrationshistory` WRITE;
 /*!40000 ALTER TABLE `__efmigrationshistory` DISABLE KEYS */;
-INSERT INTO `__efmigrationshistory` VALUES ('20190821152551_Inicial','2.2.6-servicing-10079');
+INSERT INTO `__efmigrationshistory` VALUES ('20190826000607_MigracaoInicial','2.2.6-servicing-10079');
 /*!40000 ALTER TABLE `__efmigrationshistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -47,10 +47,10 @@ DROP TABLE IF EXISTS `apartamentos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `apartamentos` (
-  `Id` varbinary(127) NOT NULL,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Numero` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,6 +59,7 @@ CREATE TABLE `apartamentos` (
 
 LOCK TABLES `apartamentos` WRITE;
 /*!40000 ALTER TABLE `apartamentos` DISABLE KEYS */;
+INSERT INTO `apartamentos` VALUES (1,3);
 /*!40000 ALTER TABLE `apartamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,8 +71,8 @@ DROP TABLE IF EXISTS `moradores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `moradores` (
-  `Id` varbinary(127) NOT NULL,
-  `ApartamentoId` varbinary(127) NOT NULL,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ApartamentoId` int(11) NOT NULL,
   `NomeCompleto` text,
   `DataNascimento` datetime NOT NULL,
   `Telefone` text,
@@ -80,7 +81,7 @@ CREATE TABLE `moradores` (
   PRIMARY KEY (`Id`),
   KEY `IX_Moradores_ApartamentoId` (`ApartamentoId`),
   CONSTRAINT `FK_Moradores_Apartamentos_ApartamentoId` FOREIGN KEY (`ApartamentoId`) REFERENCES `apartamentos` (`Id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,6 +90,7 @@ CREATE TABLE `moradores` (
 
 LOCK TABLES `moradores` WRITE;
 /*!40000 ALTER TABLE `moradores` DISABLE KEYS */;
+INSERT INTO `moradores` VALUES (1,1,'JoÃ£o da Silva','1981-10-21 21:00:00','(62) 9999-9999','01234567890','joao@gmail.com');
 /*!40000 ALTER TABLE `moradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,25 +102,25 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
-  `Id` varbinary(127) NOT NULL,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `UserName` varchar(256) DEFAULT NULL,
   `NormalizedUserName` varchar(256) DEFAULT NULL,
   `Email` varchar(256) DEFAULT NULL,
   `NormalizedEmail` varchar(256) DEFAULT NULL,
-  `EmailConfirmed` bit(1) NOT NULL,
+  `EmailConfirmed` smallint(6) NOT NULL,
   `PasswordHash` text,
   `SecurityStamp` text,
   `ConcurrencyStamp` text,
   `PhoneNumber` text,
-  `PhoneNumberConfirmed` bit(1) NOT NULL,
-  `TwoFactorEnabled` bit(1) NOT NULL,
+  `PhoneNumberConfirmed` smallint(6) NOT NULL,
+  `TwoFactorEnabled` smallint(6) NOT NULL,
   `LockoutEnd` timestamp NULL DEFAULT NULL,
-  `LockoutEnabled` bit(1) NOT NULL,
+  `LockoutEnabled` smallint(6) NOT NULL,
   `AccessFailedCount` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `UserNameIndex` (`NormalizedUserName`),
   KEY `EmailIndex` (`NormalizedEmail`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +129,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (_binary 'cha!!UK¶\Ð\×&”h','joao@gmail.com','JOAO@GMAIL.COM','joao@gmail.com','JOAO@GMAIL.COM',_binary '\0','AQAAAAEAACcQAAAAEIBMbWG6We/V8kreudCyH1M+eezdIKT6fCJ2iPptA6RzFoKQLh5/V4HJUW8X6s/dMg==','5ZYOYRI3VCMNK47ZRO36WSV6OKPXO7VN','38f47edc-be79-49cd-ab06-16c8b6ed0b46',NULL,_binary '\0',_binary '\0',NULL,_binary '',0);
+INSERT INTO `usuarios` VALUES (1,'joao@gmail.com','JOAO@GMAIL.COM','joao@gmail.com','JOAO@GMAIL.COM',0,'AQAAAAEAACcQAAAAEHu9Mdca9xhfPT3P8kTTAItNvFRjNfcT7W1ckTv7by+vBgqb2C/HUAmJrO2C8Hi85w==','HFDYDSCNNCK3ZFE2IFKVQA3G74RXVCXR','5b983ad3-2eed-478e-b86a-e35760ed910e',NULL,0,0,NULL,1,0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -140,4 +142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-21 21:05:57
+-- Dump completed on 2019-08-25 21:26:09

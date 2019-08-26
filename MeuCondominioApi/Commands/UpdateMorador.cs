@@ -6,15 +6,15 @@ namespace MeuCondominioApi.Commands
 {
     public class UpdateMorador : IRequest<Response>
     {
-        public Guid Id { get; set; }
-        public Guid ApartamentoId { get; }
+        public int Id { get; set; }
+        public int ApartamentoId { get; }
         public string NomeCompleto { get; }
         public string DataNascimento { get; }
         public string Telefone { get; }
         public string Cpf { get; }
         public string Email { get; }
 
-        public UpdateMorador(Guid id, Guid apartamentoId, string nomeCompleto, string dataNascimento,
+        public UpdateMorador(int id, int apartamentoId, string nomeCompleto, string dataNascimento,
             string telefone, string cpf, string email)
         {
             Id = id;

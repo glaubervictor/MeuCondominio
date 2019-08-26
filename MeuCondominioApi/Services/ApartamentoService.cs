@@ -25,7 +25,7 @@ namespace MeuCondominioApi.Services
 
         #region Métodos
 
-        public Apartamento GetById(Guid id)
+        public Apartamento GetById(int id)
         {
             return _contexto.Apartamentos.Find(id);
         }

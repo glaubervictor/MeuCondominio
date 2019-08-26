@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MeuCondominioApi.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class MigracaoInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,8 @@ namespace MeuCondominioApi.Migrations
                 name: "Apartamentos",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(maxLength: 127, nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
                     Numero = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -23,7 +24,8 @@ namespace MeuCondominioApi.Migrations
                 name: "Usuarios",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(maxLength: 127, nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
@@ -48,8 +50,9 @@ namespace MeuCondominioApi.Migrations
                 name: "Moradores",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(maxLength: 127, nullable: false),
-                    ApartamentoId = table.Column<byte[]>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    ApartamentoId = table.Column<int>(nullable: false),
                     NomeCompleto = table.Column<string>(nullable: true),
                     DataNascimento = table.Column<DateTime>(nullable: false),
                     Telefone = table.Column<string>(nullable: true),

@@ -4,7 +4,6 @@ using MeuCondominioApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace MeuCondominioApi.Controllers
@@ -37,7 +36,7 @@ namespace MeuCondominioApi.Controllers
         }
 
         [HttpGet("{id}", Name = "Get_Morador")]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(int id)
         {
             return Response(_moradorService.GetById(id));
         }
@@ -56,7 +55,7 @@ namespace MeuCondominioApi.Controllers
         }
 
         [HttpDelete("{id}", Name = "Delete_Morador")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(int id)
         {
             return Response(await _mediator.Send(new DeleteMorador(id)).ConfigureAwait(false));
         }

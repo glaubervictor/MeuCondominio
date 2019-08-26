@@ -44,7 +44,7 @@ namespace MeuCondominioApi.Services
                 || m.Email == description);
         }
 
-        public Morador GetById(Guid id)
+        public Morador GetById(int id)
         {
             return _contexto.Moradores.Find(id);
         }

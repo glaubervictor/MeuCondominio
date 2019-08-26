@@ -6,7 +6,7 @@ namespace MeuCondominioApi.Services
 {
     public interface IMoradorService
     {
-        Morador GetById(Guid id);
+        Morador GetById(int id);
         IEnumerable<Morador> GetAll();
         IEnumerable<Morador> GetByDescription(string description);
     }

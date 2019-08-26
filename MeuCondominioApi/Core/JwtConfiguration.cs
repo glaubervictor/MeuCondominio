@@ -13,7 +13,7 @@ namespace MeuCondominioApi.Core
     {
         public string GenerationToken(
             IConfiguration configuration,
-            Guid? userId,
+            int? userId,
             DateTime expiration,
             string[] roles)
         {

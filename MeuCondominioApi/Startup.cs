@@ -39,7 +39,7 @@ namespace MeuCondominioApi
             });
 
             //Identity
-            services.AddIdentity<Usuario, IdentityRole<Guid>>()
+            services.AddIdentity<Usuario, IdentityRole<int>>()
                 .AddEntityFrameworkStores<ContextoDados>()
                 .AddDefaultTokenProviders();
 

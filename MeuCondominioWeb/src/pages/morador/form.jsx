@@ -196,12 +196,9 @@ const MoradorForm = withFormik({
     email: email || ""
   }),
   validationSchema: Yup.object().shape({
-    apartamentoId: Yup.string()
-      .matches(
-        /(\{){0,1}[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(\}){0,1}/,
-        Messages.GUID
-      )
-      .required(Messages.REQUIRED),
+    apartamentoId: Yup.number().required(
+      Messages.REQUIRED
+    ),
     nomeCompleto: Yup.string().required("Este campo é requerido."),
     dataNascimento: Yup.string().required("Este campo é requerido."),
     telefone: Yup.string()

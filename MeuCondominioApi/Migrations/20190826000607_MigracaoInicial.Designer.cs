@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeuCondominioApi.Migrations
 {
     [DbContext(typeof(ContextoDados))]
-    [Migration("20190821152551_Inicial")]
-    partial class Inicial
+    [Migration("20190826000607_MigracaoInicial")]
+    partial class MigracaoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,10 +20,8 @@ namespace MeuCondominioApi.Migrations
 
             modelBuilder.Entity("MeuCondominioApi.Models.Apartamento", b =>
                 {
-                    b.Property<byte[]>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)))
-                        .HasMaxLength(127);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Numero");
 
@@ -34,14 +32,10 @@ namespace MeuCondominioApi.Migrations
 
             modelBuilder.Entity("MeuCondominioApi.Models.Morador", b =>
                 {
-                    b.Property<byte[]>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)))
-                        .HasMaxLength(127);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<byte[]>("ApartamentoId")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)));
+                    b.Property<int>("ApartamentoId");
 
                     b.Property<string>("Cpf");
 
@@ -62,10 +56,8 @@ namespace MeuCondominioApi.Migrations
 
             modelBuilder.Entity("MeuCondominioApi.Models.Usuario", b =>
                 {
-                    b.Property<byte[]>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasConversion(new ValueConverter<byte[], byte[]>(v => default(byte[]), v => default(byte[]), new ConverterMappingHints(size: 16)))
-                        .HasMaxLength(127);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
 
@@ -75,9 +67,9 @@ namespace MeuCondominioApi.Migrations
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
-                    b.Property<bool>("EmailConfirmed");
+                    b.Property<short>("EmailConfirmed");
 
-                    b.Property<bool>("LockoutEnabled");
+                    b.Property<short>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
@@ -91,11 +83,11 @@ namespace MeuCondominioApi.Migrations
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<bool>("PhoneNumberConfirmed");
+                    b.Property<short>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<bool>("TwoFactorEnabled");
+                    b.Property<short>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);

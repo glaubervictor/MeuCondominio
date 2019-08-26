@@ -6,7 +6,7 @@ namespace MeuCondominioApi.Models
     {
         #region Propriedades
 
-        public Guid ApartamentoId { get; set; }
+        public int ApartamentoId { get; set; }
         public string NomeCompleto { get; set; }
         public DateTime DataNascimento { get; set; }
         public string DataNascimentoFormatada { get { return DataNascimento.ToString("dd/MM/yyyy"); } }

@@ -31,7 +31,7 @@ namespace MeuCondominioApi.Controllers
         }
 
         [HttpGet("{id}", Name = "Get_Apartamento")]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(int id)
         {
             return Response(_apartamentoService.GetById(id));
         }
@@ -49,7 +49,7 @@ namespace MeuCondominioApi.Controllers
         }
 
         [HttpDelete("{id}", Name = "Delete_Apartamento")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(int id)
         {
             return Response(await _mediator.Send(new DeleteApartamento(id)).ConfigureAwait(false));
         }

@@ -6,7 +6,7 @@ namespace MeuCondominioApi.Services
 {
     public interface IApartamentoService : IDisposable
     {
-        Apartamento GetById(Guid id);
+        Apartamento GetById(int id);
         IEnumerable<Apartamento> GetAll();
     }
 }

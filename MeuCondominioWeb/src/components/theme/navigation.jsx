@@ -69,6 +69,7 @@ class Navigation extends Component {
             </li>
             {/* menu */}
             {/* <MenuItem path="/home" icon="home" label="Home" /> */}
+            <MenuItem path="/login" icon="user" label="Login" />
             <MenuItem path="/apartamentos" icon="building" label="Apartamentos" />
             <MenuItem path="/moradores" icon="user" label="Moradores" />
           </ul>

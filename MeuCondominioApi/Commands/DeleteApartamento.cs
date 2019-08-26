@@ -6,9 +6,9 @@ namespace MeuCondominioApi.Commands
 {
     public class DeleteApartamento : IRequest<Response>
     {
-        public Guid Id { get; }
+        public int Id { get; }
 
-        public DeleteApartamento(Guid id)
+        public DeleteApartamento(int id)
         {
             Id = id;
         }

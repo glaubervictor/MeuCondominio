@@ -1,19 +1,19 @@
 ﻿using FluentAssertions;
-using System.Net;
-using System.Threading.Tasks;
 using MeuCondominioTestes.Fixtures;
-using Xunit;
-using System.Net.Http.Headers;
 using MeuCondominioTestes.Helpers;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace MeuCondominioTestes.Scenarios
 {
-    public class ApartamentosTest
+    public class MoradorTests
     {
         private readonly TestContext _testContext;
-        
 
-        public ApartamentosTest()
+
+        public MoradorTests()
         {
             _testContext = new TestContext();
         }
@@ -24,7 +24,7 @@ namespace MeuCondominioTestes.Scenarios
             var client = _testContext.Client;
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", new Auth().GetToken());
 
-            var response = await client.GetAsync("/api/apartamentos");
+            var response = await client.GetAsync("/api/moradores");
             response.EnsureSuccessStatusCode();
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }

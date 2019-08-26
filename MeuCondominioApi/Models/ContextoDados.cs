@@ -6,7 +6,7 @@ using System;
 
 namespace MeuCondominioApi.Models
 {
-    public class ContextoDados : IdentityDbContext<Usuario, IdentityRole<Guid>, Guid>
+    public class ContextoDados : IdentityDbContext<Usuario, IdentityRole<int>, int>
     {
         public DbSet<Apartamento> Apartamentos { get; set; }
         public DbSet<Morador> Moradores { get; set; }
@@ -18,23 +18,18 @@ namespace MeuCondominioApi.Models
         {
             base.OnModelCreating(builder);
 
-            //Resolvendo Bug MySQL campo Guid. //https://github.com/jasonsturges/mysql-dotnet-core
-
             builder.Entity<Apartamento>(entity =>
             {
-                entity.Property(m => m.Id).HasMaxLength(127);
                 entity.Ignore(m => m.QuantidadeMoradores);
             });
 
             builder.Entity<Morador>(entity =>
             {
-                entity.Property(m => m.Id).HasMaxLength(127);
                 entity.Ignore(m => m.DataNascimentoFormatada);
             });
 
             builder.Entity<Usuario>(entity =>
             {
-                entity.Property(m => m.Id).HasMaxLength(127);
                 entity.Property(m => m.EmailConfirmed).HasConversion(new BoolToZeroOneConverter<short>());
                 entity.Property(m => m.PhoneNumberConfirmed).HasConversion(new BoolToZeroOneConverter<short>());
                 entity.Property(m => m.TwoFactorEnabled).HasConversion(new BoolToZeroOneConverter<short>());
@@ -43,12 +38,12 @@ namespace MeuCondominioApi.Models
 
             //Ignorar estas tabelas que não serão usadas.
 
-            builder.Ignore<IdentityRole<Guid>>();
-            builder.Ignore<IdentityUserRole<Guid>>();
-            builder.Ignore<IdentityUserClaim<Guid>>();
-            builder.Ignore<IdentityUserLogin<Guid>>();
-            builder.Ignore<IdentityRoleClaim<Guid>>();
-            builder.Ignore<IdentityUserToken<Guid>>();
+            builder.Ignore<IdentityRole<int>>();
+            builder.Ignore<IdentityUserRole<int>>();
+            builder.Ignore<IdentityUserClaim<int>>();
+            builder.Ignore<IdentityUserLogin<int>>();
+            builder.Ignore<IdentityRoleClaim<int>>();
+            builder.Ignore<IdentityUserToken<int>>();
 
             //Ignorar colunas de validação.
 

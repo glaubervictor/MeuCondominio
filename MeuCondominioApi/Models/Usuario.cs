@@ -3,7 +3,7 @@ using System;
 
 namespace MeuCondominioApi.Models
 {
-    public class Usuario : IdentityUser<Guid>
+    public class Usuario : IdentityUser<int>
     {
     }
 }
