@@ -11,7 +11,7 @@
     "formik": "^1.5.7",
     "history": "^4.9.0",
     "jquery": "^3.4.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "metismenu": "^3.0.4",
     "moment": "^2.24.0",
     "popper.js": "^1.15.0",
